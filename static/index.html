@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WiFi Connect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+       
+    <!-- </style>    -->
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="wifi-icon">📶</div>
+            <h2>WiFi Connect</h2>
+            <p>Available Wi-Fi Networks</p>
+        </div>
+        
+        <div class="content">
+            <button class="refresh-btn" onclick="fetchNetworks()" id="refreshBtn">
+                <span id="refreshIcon">🔄</span>
+                <span id="refreshText">Scan Networks</span>
+            </button>
+            
+            <ul id="networkList">
+                <div class="empty-state">
+                    <div class="icon">📡</div>
+                    <h3>No Networks Found</h3>
+                    <p>Click "Scan Networks" to discover available WiFi networks</p>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Connect to Network</h3>
+            <div class="form-group">
+                <label for="networkName">Network Name:</label>
+                <input type="text" id="networkName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="networkPassword">Password:</label>
+                <input type="password" id="networkPassword" placeholder="Enter network password">
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitConnection()" id="connectBtn">Connect</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+        
+    <!-- </script> -->
+</body>
+</html>
