@@ -27,7 +27,6 @@ let currentSSID = '';
             const refreshText = document.getElementById('refreshText');
             const list = document.getElementById('networkList');
 
-            // Show loading state
             refreshBtn.disabled = true;
             refreshIcon.innerHTML = '<div class="loading-spinner"></div>';
             refreshText.textContent = 'Scanning...';
