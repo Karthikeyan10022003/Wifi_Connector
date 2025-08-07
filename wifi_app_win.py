@@ -63,15 +63,19 @@ def index_tester():
 
 @app.route("/api/connect", methods=["POST"])
 def connect():
-    data = request.json
-    ssid = data.get("ssid")
-    password = data.get("password")
+    try:
+        data = request.json
+        ssid = data.get("ssid")
+        password = data.get("password")
 
-    xml_file = create_wifi_profile(ssid, password)
-    subprocess.run(f'netsh wlan add profile filename="{xml_file}"', shell=True)
-    subprocess.run(f'netsh wlan connect name="{ssid}"', shell=True)
-
-    return jsonify({"message": f"Connecting to {ssid}..."})
+        xml_file = create_wifi_profile(ssid, password)
+        subprocess.run(f'netsh wlan add profile filename="{xml_file}"', shell=True)
+        result=subprocess.run(f'netsh wlan connect name="{ssid}"', shell=True,capture_output=True, text=True)
+        if result.returncode != 0:
+            return jsonify({"error": f"Failed to connect: {result.stderr.strip()}"}), 500
+        return jsonify({"message": f"{result.stdout.strip()}"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":

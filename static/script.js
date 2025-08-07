@@ -20,18 +20,18 @@ function showNotification(message, type = 'success') {
         setTimeout(() => notification.remove(), 300);
     }, 4000);
 }
-function login(){
-const user=document.getElementById('email').value.trim();
-const pass=document.getElementById('password').value.trim();
-if(user=='admin@example.com' && pass=='admin@123'){
-document.getElementById("loginpage").style.display='none';
-document.getElementById("Wifi Page").style.display='block';
-}
-else{
-alert("Invalid Credentials");
-}
+// function login(){
+// const user=document.getElementById('email').value.trim();
+// const pass=document.getElementById('password').value.trim();
+// if(user=='admin@example.com' && pass=='admin@123'){
+// document.getElementById("loginpage").style.display='none';
+// document.getElementById("Wifi Page").style.display='block';
+// }
+// else{
+// alert("Invalid Credentials");
+// }
 
-}
+// }
 async function fetchNetworks() {
     const refreshBtn = document.getElementById('refreshBtn');
     const refreshIcon = document.getElementById('refreshIcon');
@@ -94,7 +94,7 @@ async function fetchNetworks() {
 
 function showPasswordModal(ssid) {
     currentSSID = ssid;
-    document.getElementById('networkName').value = ssid;
+  
     document.getElementById('modalTitle').textContent = `Connect to "${ssid}"`;
     document.getElementById('networkPassword').value = '';
     document.getElementById('passwordModal').style.display = 'block';
@@ -148,10 +148,10 @@ async function submitConnection() {
     }
 }
 
-document.getElementById('password').addEventListener('keypress',function(q){
-if(q.key==='Enter'){
-login();}
-});
+// document.getElementById('password').addEventListener('keypress',function(q){
+// if(q.key==='Enter'){
+// login();}
+// });
 document.getElementById('networkPassword').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
         submitConnection();
